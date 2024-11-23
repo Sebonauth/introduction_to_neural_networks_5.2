@@ -118,7 +118,7 @@
 </head>
 <body>
     <section id="section1">
-  
+        <h1>Section 2: Understanding Each Layer</h1>
         <p>Let's start with the Input Layer - the network's gateway for data.</p>
         <div class="interactive-placeholder">
             <img src="/placeholder.svg?height=300&width=600" alt="Interactive: Shows an input layer with nodes lighting up as data enters">
@@ -159,7 +159,7 @@
                 <label><input type="radio" name="hidden-layers" value="2"> You can have multiple hidden layers</label><br>
                 <label><input type="radio" name="hidden-layers" value="3"> Hidden layers are directly observable from outside the network</label><br>
                 <label><input type="radio" name="hidden-layers" value="4"> Hidden layers learn features automatically</label><br>
-                <button type="button" class="check-button" onclick="checkAnswer()">Check</button>
+                <button type="button" class="check-button" onclick="checkAnswer()">Check Answer</button>
             </form>
             <p id="quiz-result" style="display: none;"></p>
             <p id="quiz-explanation" style="display: none;">Hidden layers are called "hidden" precisely because we can't directly observe their internal representations!</p>
@@ -191,6 +191,7 @@
 
         function showNextSection(nextSectionId) {
             const nextSectionElement = document.getElementById("section" + nextSectionId);
+            const clickedButton = event.target;
             
             nextSectionElement.style.display = "block";
             
@@ -198,6 +199,9 @@
                 nextSectionElement.style.opacity = "1";
                 nextSectionElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }, 10);
+
+            // Hide the clicked button
+            clickedButton.style.display = "none";
 
             currentSection = nextSectionId;
         }
@@ -237,7 +241,7 @@
             if (event.target.classList.contains('continue-button')) {
                 const nextSection = event.target.getAttribute('data-next-section');
                 if (nextSection) {
-                    showNextSection(nextSection);
+                    showNextSection(nextSection, event); // Pass the event object
                 }
             }
         });
