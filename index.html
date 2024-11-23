@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding Each Layer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            font-size: 150%;
+        }
+        section {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #ffffff;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in;
+        }
+        h1, h3, h4 {
+            color: #333;
+            margin-top: 20px;
+        }
+        p, li {
+            line-height: 1.6;
+            color: #444;
+            margin-bottom: 20px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        .image-placeholder, .interactive-placeholder, .continue-button, .vocab-section, .why-it-matters, .test-your-knowledge, .stop-and-think {
+            text-align: left;
+        }
+        .image-placeholder img, .interactive-placeholder img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .vocab-section, .why-it-matters, .test-your-knowledge, .stop-and-think {
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .vocab-section {
+            background-color: #f0f8ff;
+        }
+        .vocab-section h3 {
+            color: #1e90ff;
+            font-size: 0.75em;
+            margin-bottom: 5px;
+            margin-top: 5px;
+        }
+        .vocab-section h4 {
+            color: #000;
+            font-size: 0.9em;
+            margin-top: 10px;
+            margin-bottom: 8px;
+        }
+        .vocab-term {
+            font-weight: bold;
+            color: #1e90ff;
+        }
+        .why-it-matters {
+            background-color: #ffe6f0;
+        }
+        .why-it-matters h3 {
+            color: #d81b60;
+            font-size: 0.75em;
+            margin-bottom: 5px;
+            margin-top: 5px;
+        }
+        .test-your-knowledge {
+            background-color: #e6ffe6;
+        }
+        .test-your-knowledge h3 {
+            color: #28a745;
+            font-size: 0.75em;
+            margin-bottom: 5px;
+            margin-top: 5px;
+        }
+        .test-your-knowledge h4 {
+            color: #000;
+            font-size: 0.9em;
+            margin-top: 10px;
+            margin-bottom: 8px;
+        }
+        .stop-and-think {
+            background-color: #e6e6ff;
+        }
+        .stop-and-think h3 {
+            color: #4b0082;
+            font-size: 0.75em;
+            margin-bottom: 5px;
+            margin-top: 5px;
+        }
+        .continue-button, .check-button, .reveal-button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 15px;
+            color: #ffffff;
+            background-color: #007bff;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .check-button {
+            background-color: #28a745;
+        }
+        .reveal-button {
+            background-color: #4b0082;
+        }
+    </style>
+</head>
+<body>
+    <section id="section1">
+        <h1>Understanding Each Layer</h1>
+        <p>Let's start with the Input Layer - the network's gateway for data.</p>
+        <div class="interactive-placeholder">
+            <img src="/placeholder.svg?height=300&width=600" alt="Interactive: Shows an input layer with nodes lighting up as data enters">
+        </div>
+        <p>The input layer is special because it's the only layer that doesn't perform any computations. It simply receives your data and passes it forward.</p>
+        <div class="continue-button" data-next-section="2">Continue</div>
+    </section>
+
+    <section id="section2">
+        <div class="vocab-section">
+            <h3>Build Your Vocab</h3>
+            <h4>Input Layer</h4>
+            <p>The first layer of a neural network that receives raw data. Each node represents one feature of your input data.</p>
+        </div>
+        <p>For example, in our previous marble classifier, the input layer had two nodes:</p>
+        <ul>
+            <li>One for mass</li>
+            <li>One for diameter</li>
+        </ul>
+        <div class="continue-button" data-next-section="3">Continue</div>
+    </section>
+
+    <section id="section3">
+        <p>Moving on to Hidden Layers - this is where the magic happens!</p>
+        <div class="interactive-placeholder">
+            <img src="/placeholder.svg?height=300&width=600" alt="Interactive: Visualization showing multiple hidden layers with nodes and connections that users can interact with">
+        </div>
+        <p>Hidden layers are what give neural networks their power to learn complex patterns. Each node in a hidden layer represents a learned feature that the network has discovered.</p>
+        <div class="why-it-matters">
+            <h3>Why It Matters</h3>
+            <p>The more hidden layers you have, the more complex patterns your network can learn. This is why we call networks with many hidden layers "deep" neural networks.</p>
+        </div>
+        <div class="test-your-knowledge">
+            <h3>Test Your Knowledge</h3>
+            <h4>Which statement about hidden layers is FALSE?</h4>
+            <form id="quiz-form">
+                <label><input type="radio" name="hidden-layers" value="1"> Hidden layers perform computations on the data</label><br>
+                <label><input type="radio" name="hidden-layers" value="2"> You can have multiple hidden layers</label><br>
+                <label><input type="radio" name="hidden-layers" value="3"> Hidden layers are directly observable from outside the network</label><br>
+                <label><input type="radio" name="hidden-layers" value="4"> Hidden layers learn features automatically</label><br>
+                <button type="button" class="check-button" onclick="checkAnswer()">Check</button>
+            </form>
+            <p id="quiz-result" style="display: none;"></p>
+            <p id="quiz-explanation" style="display: none;">Hidden layers are called "hidden" precisely because we can't directly observe their internal representations!</p>
+        </div>
+        <div class="continue-button" data-next-section="4">Continue</div>
+    </section>
+
+    <section id="section4">
+        <p>Finally, we reach the Output Layer - where your network makes its predictions.</p>
+        <div class="interactive-placeholder">
+            <img src="/placeholder.svg?height=300&width=600" alt="Interactive: Shows an output layer transforming processed data into final predictions">
+        </div>
+        <p>The output layer's structure depends on your task:</p>
+        <ul>
+            <li>For binary classification: One output node</li>
+            <li>For multiclass classification: Multiple nodes (one per class)</li>
+            <li>For regression: One node for each predicted value</li>
+        </ul>
+        <div class="stop-and-think">
+            <h3>Stop & Think</h3>
+            <h4>In a network designed to recognize handwritten digits (0-9), how many nodes would you expect in the output layer?</h4>
+            <button class="reveal-button" onclick="revealAnswer()">Reveal Answer</button>
+            <p id="reveal-text" style="display: none;">You'd need 10 output nodes - one for each possible digit!</p>
+        </div>
+    </section>
+
+    <script>
+        let currentSection = 1;
+
+        function showNextSection(nextSectionId) {
+            const nextSectionElement = document.getElementById("section" + nextSectionId);
+            
+            nextSectionElement.style.display = "block";
+            
+            setTimeout(() => {
+                nextSectionElement.style.opacity = "1";
+                nextSectionElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 10);
+
+            currentSection = nextSectionId;
+        }
+
+        function checkAnswer() {
+            const selectedAnswer = document.querySelector('input[name="hidden-layers"]:checked');
+            const resultElement = document.getElementById("quiz-result");
+            const explanationElement = document.getElementById("quiz-explanation");
+
+            if (selectedAnswer) {
+                if (selectedAnswer.value === "3") {
+                    resultElement.textContent = "Correct!";
+                    resultElement.style.color = "green";
+                } else {
+                    resultElement.textContent = "Incorrect. Try again!";
+                    resultElement.style.color = "red";
+                }
+                resultElement.style.display = "block";
+                explanationElement.style.display = "block";
+            } else {
+                resultElement.textContent = "Please select an answer.";
+                resultElement.style.color = "black";
+                resultElement.style.display = "block";
+                explanationElement.style.display = "none";
+            }
+        }
+
+        function revealAnswer() {
+            const revealText = document.getElementById("reveal-text");
+            const revealButton = document.querySelector(".reveal-button");
+            
+            revealText.style.display = "block";
+            revealButton.style.display = "none";
+        }
+
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('continue-button')) {
+                const nextSection = event.target.getAttribute('data-next-section');
+                if (nextSection) {
+                    showNextSection(nextSection);
+                }
+            }
+        });
+
+        // Show the first section initially
+        document.getElementById("section1").style.display = "block";
+        document.getElementById("section1").style.opacity = "1";
+    </script>
+</body>
+</html>
